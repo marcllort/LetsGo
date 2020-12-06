@@ -1,24 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KY0-qb-DIf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="wNM-HL-3sf">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <navigationController id="KY0-qb-DIf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JIl-NJ-BN1">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="DFH-5b-Nq5" kind="relationship" relationship="rootViewController" id="vGS-7A-QHo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NIK-Fg-x01" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-539" y="-129"/>
+        </scene>
+        <!--Card View Controller-->
+        <scene sceneID="mIx-5c-vGe">
+            <objects>
+                <viewController id="DFH-5b-Nq5" customClass="CardViewController" customModule="LetsGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5rL-le-Dy6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XU7-Dg-HRK">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="rE9-f1-q7V"/>
+                                    <tabBarItem systemItem="more" id="kpg-0h-S5s"/>
+                                </items>
+                            </tabBar>
+                            <searchBar contentMode="redraw" placeholder="Origin Country" translatesAutoresizingMaskIntoConstraints="NO" id="cxw-3X-m9T">
+                                <rect key="frame" x="0.0" y="144" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="74i-Si-pTf"/>
+                                    <constraint firstAttribute="width" constant="414" id="pJ6-Ho-6NY"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <searchBar contentMode="redraw" placeholder="Destination Country" translatesAutoresizingMaskIntoConstraints="NO" id="pat-bf-g1Q">
+                                <rect key="frame" x="0.0" y="218" width="414" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="IvV-iq-Im8"/>
+                                    <constraint firstAttribute="height" constant="56" id="Q9N-8g-cGG"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8aa-Yw-BHb">
+                                <rect key="frame" x="155" y="315" width="104" height="34"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="HpA-jF-b0O"/>
+                                    <constraint firstAttribute="width" constant="104" id="USY-Et-bpW"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Search"/>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ktf-AG-xe2" customClass="CardHighlight" customModule="Cards">
+                                <rect key="frame" x="74" y="435" width="267" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="Flappy_Bird_icon"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="725e5dc00ba49c240cd489e7b87e0496--city-background-flappy-bird"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Tap To Open"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gGO-22-F6Q"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8aa-Yw-BHb" firstAttribute="top" secondItem="pat-bf-g1Q" secondAttribute="bottom" constant="41" id="1NZ-Vy-UvR"/>
+                            <constraint firstItem="cxw-3X-m9T" firstAttribute="centerX" secondItem="gGO-22-F6Q" secondAttribute="centerX" id="DkF-5S-HhM"/>
+                            <constraint firstItem="8aa-Yw-BHb" firstAttribute="centerX" secondItem="gGO-22-F6Q" secondAttribute="centerX" id="Es7-YN-fjq"/>
+                            <constraint firstItem="pat-bf-g1Q" firstAttribute="top" secondItem="cxw-3X-m9T" secondAttribute="bottom" constant="30" id="OBq-Hn-H6A"/>
+                            <constraint firstItem="cxw-3X-m9T" firstAttribute="top" secondItem="gGO-22-F6Q" secondAttribute="top" constant="56" id="gin-Mt-J0G"/>
+                            <constraint firstItem="pat-bf-g1Q" firstAttribute="centerX" secondItem="gGO-22-F6Q" secondAttribute="centerX" id="oqB-Ii-9U1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gX4-6L-BMe"/>
+                    <connections>
+                        <outlet property="second" destination="ktf-AG-xe2" id="BAg-OL-BXr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9s6-Tk-uxZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="415.94202898550731" y="-129.24107142857142"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bae-sn-Xj5">
+            <objects>
+                <viewController storyboardIdentifier="CardContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gL9-wS-Bew" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yM6-4b-INi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WORKS!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOJ-N4-yOu">
+                                <rect key="frame" x="186" y="415" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ErG-FH-PO2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qdB-OM-y5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1357.9710144927537" y="-129.24107142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="725e5dc00ba49c240cd489e7b87e0496--city-background-flappy-bird" width="638" height="678"/>
+        <image name="Flappy_Bird_icon" width="175" height="175"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

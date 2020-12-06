@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "725e5dc00ba49c240cd489e7b87e0496--city-background-flappy-bird.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
