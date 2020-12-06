@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XU7-Dg-HRK">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
@@ -67,36 +67,57 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="searchCall:" destination="DFH-5b-Nq5" eventType="touchUpInside" id="z1e-67-WGx"/>
+                                </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ktf-AG-xe2" customClass="CardHighlight" customModule="Cards">
-                                <rect key="frame" x="74" y="435" width="267" height="188"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ktf-AG-xe2" customClass="CardHighlight" customModule="Cards">
+                                <rect key="frame" x="37" y="435" width="341" height="248"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
-                                <color key="tintColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" systemColor="systemIndigoColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="341" id="ZmE-lG-2LK"/>
+                                    <constraint firstAttribute="height" constant="248" id="miO-Lp-Dad"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="Flappy_Bird_icon"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="725e5dc00ba49c240cd489e7b87e0496--city-background-flappy-bird"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="Radar-Covid-Logo"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="maxresdefault"/>
                                     <userDefinedRuntimeAttribute type="string" keyPath="buttonText" value="Tap To Open"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Covid-19 Search Results"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="itemSubtitle" value="Statistics"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="itemTitle" value="Check the latest info"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="WPw-ZS-r7X">
+                                <rect key="frame" x="197" y="549" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gGO-22-F6Q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8aa-Yw-BHb" firstAttribute="top" secondItem="pat-bf-g1Q" secondAttribute="bottom" constant="41" id="1NZ-Vy-UvR"/>
+                            <constraint firstItem="ktf-AG-xe2" firstAttribute="top" secondItem="8aa-Yw-BHb" secondAttribute="bottom" constant="86" id="Bah-sW-tsN"/>
                             <constraint firstItem="cxw-3X-m9T" firstAttribute="centerX" secondItem="gGO-22-F6Q" secondAttribute="centerX" id="DkF-5S-HhM"/>
                             <constraint firstItem="8aa-Yw-BHb" firstAttribute="centerX" secondItem="gGO-22-F6Q" secondAttribute="centerX" id="Es7-YN-fjq"/>
+                            <constraint firstItem="gGO-22-F6Q" firstAttribute="trailing" secondItem="ktf-AG-xe2" secondAttribute="trailing" constant="36" id="GD7-Uh-nnR"/>
                             <constraint firstItem="pat-bf-g1Q" firstAttribute="top" secondItem="cxw-3X-m9T" secondAttribute="bottom" constant="30" id="OBq-Hn-H6A"/>
                             <constraint firstItem="cxw-3X-m9T" firstAttribute="top" secondItem="gGO-22-F6Q" secondAttribute="top" constant="56" id="gin-Mt-J0G"/>
                             <constraint firstItem="pat-bf-g1Q" firstAttribute="centerX" secondItem="gGO-22-F6Q" secondAttribute="centerX" id="oqB-Ii-9U1"/>
+                            <constraint firstItem="ktf-AG-xe2" firstAttribute="leading" secondItem="gGO-22-F6Q" secondAttribute="leading" constant="37" id="z6U-36-ZGK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="gX4-6L-BMe"/>
                     <connections>
+                        <outlet property="destinationText" destination="pat-bf-g1Q" id="ZXf-CB-19H"/>
+                        <outlet property="originText" destination="cxw-3X-m9T" id="pmB-pY-SdU"/>
+                        <outlet property="searchButton" destination="8aa-Yw-BHb" id="edA-ld-5bt"/>
+                        <outlet property="searchCard" destination="ktf-AG-xe2" id="Xmq-ZE-KVS"/>
                         <outlet property="second" destination="ktf-AG-xe2" id="BAg-OL-BXr"/>
+                        <outlet property="spinner" destination="WPw-ZS-r7X" id="4UJ-Cx-0oz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9s6-Tk-uxZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -106,39 +127,107 @@
         <!--View Controller-->
         <scene sceneID="bae-sn-Xj5">
             <objects>
-                <viewController storyboardIdentifier="CardContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gL9-wS-Bew" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardContent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gL9-wS-Bew" customClass="ViewController" customModule="LetsGo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yM6-4b-INi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WORKS!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOJ-N4-yOu">
-                                <rect key="frame" x="186" y="415" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WORKS!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOJ-N4-yOu">
+                                <rect key="frame" x="36" y="47" width="346" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="kXo-pf-HeH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="WORKS!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDd-bS-zXb">
+                                <rect key="frame" x="36" y="95" width="346" height="58.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WORKS!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XB1-5c-0QE">
+                                <rect key="frame" x="36" y="161.5" width="346" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INFO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7h-49-Yav">
+                                <rect key="frame" x="36" y="202" width="346" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yls-Kf-TZN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSG-k7-wWB">
+                                <rect key="frame" x="29" y="250" width="353" height="168"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="168" id="orq-QJ-NS2"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3l8-K7-E63">
+                                <rect key="frame" x="36" y="441" width="346" height="421"/>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ErG-FH-PO2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ErG-FH-PO2" firstAttribute="bottom" secondItem="3l8-K7-E63" secondAttribute="bottom" id="4h9-Ta-j7C"/>
+                            <constraint firstItem="r7h-49-Yav" firstAttribute="trailing" secondItem="BDd-bS-zXb" secondAttribute="trailing" id="5Oq-aY-Nma"/>
+                            <constraint firstItem="3l8-K7-E63" firstAttribute="trailing" secondItem="cSG-k7-wWB" secondAttribute="trailing" id="6gR-Nf-EbT"/>
+                            <constraint firstItem="cSG-k7-wWB" firstAttribute="trailing" secondItem="lOJ-N4-yOu" secondAttribute="trailing" id="Bhu-oD-yUA"/>
+                            <constraint firstItem="r7h-49-Yav" firstAttribute="leading" secondItem="BDd-bS-zXb" secondAttribute="leading" id="CN3-b7-7Xc"/>
+                            <constraint firstItem="cSG-k7-wWB" firstAttribute="top" secondItem="r7h-49-Yav" secondAttribute="bottom" constant="8" symbolic="YES" id="DFE-pc-CgN"/>
+                            <constraint firstItem="cSG-k7-wWB" firstAttribute="top" secondItem="yM6-4b-INi" secondAttribute="top" constant="250" id="ID5-Ip-eu9"/>
+                            <constraint firstItem="BDd-bS-zXb" firstAttribute="top" secondItem="lOJ-N4-yOu" secondAttribute="bottom" constant="8" symbolic="YES" id="LnZ-MK-vhx"/>
+                            <constraint firstItem="XB1-5c-0QE" firstAttribute="top" secondItem="BDd-bS-zXb" secondAttribute="bottom" constant="8" symbolic="YES" id="MyG-oN-f90"/>
+                            <constraint firstItem="r7h-49-Yav" firstAttribute="leading" secondItem="XB1-5c-0QE" secondAttribute="leading" id="Oba-G5-6Dq"/>
+                            <constraint firstItem="ErG-FH-PO2" firstAttribute="trailing" secondItem="BDd-bS-zXb" secondAttribute="trailing" constant="32" id="SlV-9Y-b4b"/>
+                            <constraint firstItem="3l8-K7-E63" firstAttribute="leading" secondItem="cSG-k7-wWB" secondAttribute="leading" constant="7" id="WPD-rn-Gly"/>
+                            <constraint firstItem="lOJ-N4-yOu" firstAttribute="top" secondItem="ErG-FH-PO2" secondAttribute="top" constant="3" id="ZUU-64-ih1"/>
+                            <constraint firstItem="cSG-k7-wWB" firstAttribute="trailing" secondItem="r7h-49-Yav" secondAttribute="trailing" id="igo-94-nJF"/>
+                            <constraint firstItem="cSG-k7-wWB" firstAttribute="top" secondItem="r7h-49-Yav" secondAttribute="bottom" constant="8" symbolic="YES" id="j3M-eQ-gLD"/>
+                            <constraint firstItem="3l8-K7-E63" firstAttribute="top" secondItem="cSG-k7-wWB" secondAttribute="bottom" constant="23" id="oTp-ag-VaV"/>
+                            <constraint firstItem="r7h-49-Yav" firstAttribute="trailing" secondItem="XB1-5c-0QE" secondAttribute="trailing" id="p5F-Tt-Stz"/>
+                            <constraint firstItem="cSG-k7-wWB" firstAttribute="leading" secondItem="lOJ-N4-yOu" secondAttribute="leading" constant="-7" id="q0O-Qh-TDY"/>
+                            <constraint firstItem="cSG-k7-wWB" firstAttribute="top" secondItem="r7h-49-Yav" secondAttribute="bottom" constant="8" id="w2O-AI-V0k"/>
+                            <constraint firstItem="BDd-bS-zXb" firstAttribute="leading" secondItem="ErG-FH-PO2" secondAttribute="leading" constant="36" id="wbZ-ud-pKK"/>
+                            <constraint firstItem="cSG-k7-wWB" firstAttribute="leading" secondItem="r7h-49-Yav" secondAttribute="leading" constant="-7" id="xFA-gF-0W3"/>
+                            <constraint firstItem="r7h-49-Yav" firstAttribute="top" secondItem="XB1-5c-0QE" secondAttribute="bottom" constant="19" id="ygd-OC-lWQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cases" destination="XB1-5c-0QE" id="dth-cI-f55"/>
+                        <outlet property="infotext" destination="cSG-k7-wWB" id="RWu-gT-qtJ"/>
+                        <outlet property="map" destination="3l8-K7-E63" id="zAr-bw-H8w"/>
+                        <outlet property="origin" destination="BDd-bS-zXb" id="14J-aL-VMm"/>
+                        <outlet property="textLabel" destination="lOJ-N4-yOu" id="B7p-a6-qA0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdB-OM-y5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1357.9710144927537" y="-129.24107142857142"/>
+            <point key="canvasLocation" x="1298.5507246376812" y="-129.24107142857142"/>
         </scene>
     </scenes>
     <resources>
-        <image name="725e5dc00ba49c240cd489e7b87e0496--city-background-flappy-bird" width="638" height="678"/>
-        <image name="Flappy_Bird_icon" width="175" height="175"/>
+        <image name="Radar-Covid-Logo" width="219" height="219"/>
+        <image name="maxresdefault" width="1280" height="720"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

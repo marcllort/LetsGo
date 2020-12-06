@@ -17,6 +17,7 @@
 		F76F797C2576C9A0006DCE2F /* LetsGoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76F797B2576C9A0006DCE2F /* LetsGoTests.swift */; };
 		F76F79872576C9A0006DCE2F /* LetsGoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76F79862576C9A0006DCE2F /* LetsGoUITests.swift */; };
 		F78FC1DF257CEAF30019B83F /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FC1DE257CEAF30019B83F /* CardViewController.swift */; };
+		F78FC1F8257CF8380019B83F /* CovidData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FC1F7257CF8380019B83F /* CovidData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		F76F79862576C9A0006DCE2F /* LetsGoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsGoUITests.swift; sourceTree = "<group>"; };
 		F76F79882576C9A0006DCE2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F78FC1DE257CEAF30019B83F /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		F78FC1F7257CF8380019B83F /* CovidData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		F76F79602576C99D006DCE2F /* LetsGo */ = {
 			isa = PBXGroup;
 			children = (
+				F78FC1EB257CF80B0019B83F /* Model */,
 				F76F79612576C99D006DCE2F /* AppDelegate.swift */,
 				F76F79632576C99D006DCE2F /* SceneDelegate.swift */,
 				F76F79652576C99D006DCE2F /* ViewController.swift */,
@@ -160,6 +163,14 @@
 				F76F79882576C9A0006DCE2F /* Info.plist */,
 			);
 			path = LetsGoUITests;
+			sourceTree = "<group>";
+		};
+		F78FC1EB257CF80B0019B83F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F78FC1F7257CF8380019B83F /* CovidData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,6 +414,7 @@
 				F76F79662576C99D006DCE2F /* ViewController.swift in Sources */,
 				F76F796C2576C99D006DCE2F /* LetsGo.xcdatamodeld in Sources */,
 				F76F79622576C99D006DCE2F /* AppDelegate.swift in Sources */,
+				F78FC1F8257CF8380019B83F /* CovidData.swift in Sources */,
 				F78FC1DF257CEAF30019B83F /* CardViewController.swift in Sources */,
 				F76F79642576C99D006DCE2F /* SceneDelegate.swift in Sources */,
 			);
