@@ -1,32 +1,22 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  LetsGo
 //
-//  Created by Marc Llort Maulion on 01/12/2020.
+//  Created by Marc Llort Maulion on 08/12/2020.
 //
 
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
 
-    @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var origin: UILabel!
-    @IBOutlet weak var cases: UILabel!
-    @IBOutlet weak var infotext: UITextView!
-    @IBOutlet weak var map: MKMapView!
-    
-    var data: CovidData?
-    var text:String = ""
     var locationManager: CLLocationManager?
     var previousLocation: CLLocation?
+    @IBOutlet weak var map: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        textLabel?.text = data?.destination
-        map.layer.cornerRadius = 10.0;
-        
+
         if locationManager==nil {
             locationManager = CLLocationManager()
         }
@@ -35,8 +25,9 @@ class ViewController: UIViewController {
         locationManager!.requestAlwaysAuthorization()
         locationManager!.requestLocation()
         
+        searchLocationForText("Madrid")
     }
-
+    
     func centerOnRegion(_ region: CLLocationCoordinate2D?){
         let diameter = 2000000
         if region == nil{
@@ -48,15 +39,15 @@ class ViewController: UIViewController {
         }
     }
     
-    func setPinOnCoordinate(_ point: CLLocationCoordinate2D){
+    func setPinOnCoordinate(_ point: CLLocationCoordinate2D, _ string: String){
         let annotation = MKPointAnnotation()
         annotation.coordinate = point
-        annotation.title = data!.destination
+        annotation.title = string
         map.addAnnotation(annotation)
     }
     
     func searchLocationForText(_ string: String){
-
+        
         let searchRequest = MKLocalSearch.Request()
         
         searchRequest.naturalLanguageQuery=string
@@ -73,27 +64,10 @@ class ViewController: UIViewController {
             
             let relevantItem = response.mapItems[0]
             self.centerOnRegion(relevantItem.placemark.coordinate)
-            self.setPinOnCoordinate(relevantItem.placemark.coordinate)
+            self.setPinOnCoordinate(relevantItem.placemark.coordinate, string)
         }
     }
-    
-    func reload() {
-        if data!.allowed {
-            textLabel?.textColor=UIColor.green
-        }else{
-            textLabel?.textColor=UIColor.red
-        }
-        
-        textLabel?.text = "Destination: " + data!.destination
-        origin.text = "Origin: " + data!.origin
-        cases.text = "New daily cases: " + String(data!.covid.newConfirmed)
-        infotext.text = data!.info
-        searchLocationForText(data!.destination)
-    }
 
-}
-
-extension ViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations
                             locations: [CLLocation]) {
         if locations.count == 0 {
@@ -103,7 +77,9 @@ extension ViewController: CLLocationManagerDelegate{
         previousLocation = location
         centerOnRegion(nil)
     }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR")
     }
 }
+

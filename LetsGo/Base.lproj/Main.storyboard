@@ -201,12 +201,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdB-OM-y5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5384" y="-263"/>
+            <point key="canvasLocation" x="4370" y="-263"/>
         </scene>
         <!--Points of interest-->
         <scene sceneID="tui-5v-5xc">
             <objects>
-                <viewController title="Points of interest" interfaceStyle="dark" id="Iiu-74-K8J" sceneMemberID="viewController">
+                <viewController title="Points of interest" interfaceStyle="dark" id="Iiu-74-K8J" customClass="MapViewController" customModule="LetsGo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qKb-SC-gmu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -226,26 +226,51 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map.fill" catalog="system" id="09R-iV-Kc4"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="map" destination="nm3-4b-Lbm" id="8oS-Sa-sPT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMP-4P-401" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3656.521739130435" y="590.625"/>
         </scene>
         <!--Saved-->
-        <scene sceneID="pP4-ZZ-sJd">
+        <scene sceneID="guD-RL-aOi">
             <objects>
-                <viewController id="9cm-6B-DaU" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9mq-Ny-mNA">
+                <tableViewController id="64I-NR-Jh2" customClass="SavedViewController" customModule="LetsGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CPM-JK-jgP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="sQZ-O4-D9P"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Saved" image="folder.fill" catalog="system" id="my2-sS-faY"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nc3-lJ-AnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="z7M-mL-fof">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KZm-0M-uwt">
+                                <rect key="frame" x="0.0" y="72" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KZm-0M-uwt" id="Uqc-YK-og7">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="64I-NR-Jh2" id="NGR-FJ-Zda"/>
+                            <outlet property="delegate" destination="64I-NR-Jh2" id="fmp-ZB-cvW"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Saved" image="folder.fill" catalog="system" id="FSo-bc-oI3"/>
+                    <connections>
+                        <outlet property="table" destination="CPM-JK-jgP" id="KKS-6v-VOs"/>
+                        <outlet property="tableView" destination="CPM-JK-jgP" id="ciD-kP-Hgb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WGD-Uy-U8t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4542" y="216"/>
+            <point key="canvasLocation" x="5123" y="216"/>
         </scene>
         <!--LetsGo-->
         <scene sceneID="2S5-eE-zO3">
@@ -260,7 +285,7 @@
                     <connections>
                         <segue destination="DFH-5b-Nq5" kind="relationship" relationship="viewControllers" id="U8F-tY-tJR"/>
                         <segue destination="Iiu-74-K8J" kind="relationship" relationship="viewControllers" id="9x6-TU-cNq"/>
-                        <segue destination="9cm-6B-DaU" kind="relationship" relationship="viewControllers" id="S0f-Ox-PSQ"/>
+                        <segue destination="64I-NR-Jh2" kind="relationship" relationship="viewControllers" id="nQx-y7-680"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rs1-Ry-8Sd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
