@@ -31,9 +31,8 @@ class MapViewController: UIViewController {
         let compass = MKCompassButton(mapView: mapView)
         compass.compassVisibility = .visible
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: compass)
-        mapView.showsCompass = false // Use the compass in the navigation bar instead.
-        
-        // Make sure `MKPinAnnotationView` and the reuse identifier is recognized in this map view.
+        mapView.showsCompass = false
+    
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: AnnotationReuseID.pin.rawValue)
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
     }
@@ -71,7 +70,6 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? PlaceAnnotation else { return nil }
         
-        // Annotation views should be dequeued from a reuse queue to be efficent.
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: AnnotationReuseID.pin.rawValue, for: annotation) as? MKMarkerAnnotationView
         view?.canShowCallout = true
         view?.clusteringIdentifier = "searchResult"

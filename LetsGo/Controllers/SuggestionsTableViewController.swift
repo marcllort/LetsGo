@@ -104,7 +104,6 @@ extension SuggestionsTableViewController: MKLocalSearchCompleterDelegate {
 
 extension SuggestionsTableViewController: UISearchResultsUpdating {
         func updateSearchResults(for searchController: UISearchController) {
-        // Ask `MKLocalSearchCompleter` for new completion suggestions based on the change in the text entered in `UISearchBar`.
         searchCompleter?.queryFragment = searchController.searchBar.text ?? ""
     }
 }

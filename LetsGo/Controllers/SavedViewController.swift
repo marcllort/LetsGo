@@ -74,16 +74,5 @@ class SavedViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*if segue.identifier == "infoTransition"{
-            let vc = segue.destination as! AddTaskViewController
-            
-            vc.callbackTask = {callbackTask in
-                self.tasks.append(Task(taskName: callbackTask!, taskIsCompleted: false))
-                self.tableView.reloadData()
-            }
-        }*/
-    }
 
 }
