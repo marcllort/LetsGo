@@ -22,6 +22,10 @@
 		F78FC208257F946A0019B83F /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FC207257F946A0019B83F /* SavedViewController.swift */; };
 		F7E700E3258E11FF0009C0A9 /* PointOfInterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700E2258E11FF0009C0A9 /* PointOfInterestCell.swift */; };
 		F7E700E8258E12230009C0A9 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700E7258E12230009C0A9 /* PointOfInterest.swift */; };
+		F7E700EE258E1BAA0009C0A9 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700ED258E1BAA0009C0A9 /* PlaceAnnotation.swift */; };
+		F7E700F3258E1BED0009C0A9 /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700F2258E1BED0009C0A9 /* MKPlacemark+Extension.swift */; };
+		F7E70136258E225C0009C0A9 /* SuggestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E70135258E225C0009C0A9 /* SuggestionsTableViewController.swift */; };
+		F7E7013B258E227B0009C0A9 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E7013A258E227B0009C0A9 /* SearchResultTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +73,10 @@
 		F78FC207257F946A0019B83F /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		F7E700E2258E11FF0009C0A9 /* PointOfInterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestCell.swift; sourceTree = "<group>"; };
 		F7E700E7258E12230009C0A9 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
+		F7E700ED258E1BAA0009C0A9 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
+		F7E700F2258E1BED0009C0A9 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MKPlacemark+Extension.swift"; path = "../../../../../../Downloads/SearchingForNearbyPointsOfInterest/MapSearch/MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
+		F7E70135258E225C0009C0A9 /* SuggestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewController.swift; sourceTree = "<group>"; };
+		F7E7013A258E227B0009C0A9 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,16 +152,12 @@
 				F78FC1EB257CF80B0019B83F /* Model */,
 				F76F79612576C99D006DCE2F /* AppDelegate.swift */,
 				F76F79632576C99D006DCE2F /* SceneDelegate.swift */,
-				F76F79652576C99D006DCE2F /* ViewController.swift */,
 				F76F79672576C99D006DCE2F /* Main.storyboard */,
 				F76F796D2576C99F006DCE2F /* Assets.xcassets */,
 				F76F796F2576C99F006DCE2F /* LaunchScreen.storyboard */,
 				F76F79722576C99F006DCE2F /* Info.plist */,
+				F7E70104258E1F430009C0A9 /* Controllers */,
 				F76F796A2576C99D006DCE2F /* LetsGo.xcdatamodeld */,
-				F78FC1DE257CEAF30019B83F /* CardViewController.swift */,
-				F78FC202257F94580019B83F /* MapViewController.swift */,
-				F78FC207257F946A0019B83F /* SavedViewController.swift */,
-				F7E700E2258E11FF0009C0A9 /* PointOfInterestCell.swift */,
 			);
 			path = LetsGo;
 			sourceTree = "<group>";
@@ -179,10 +183,26 @@
 		F78FC1EB257CF80B0019B83F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F7E700E2258E11FF0009C0A9 /* PointOfInterestCell.swift */,
+				F7E700F2258E1BED0009C0A9 /* MKPlacemark+Extension.swift */,
 				F78FC1F7257CF8380019B83F /* CovidData.swift */,
 				F7E700E7258E12230009C0A9 /* PointOfInterest.swift */,
+				F7E700ED258E1BAA0009C0A9 /* PlaceAnnotation.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F7E70104258E1F430009C0A9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F78FC207257F946A0019B83F /* SavedViewController.swift */,
+				F78FC202257F94580019B83F /* MapViewController.swift */,
+				F78FC1DE257CEAF30019B83F /* CardViewController.swift */,
+				F76F79652576C99D006DCE2F /* ViewController.swift */,
+				F7E70135258E225C0009C0A9 /* SuggestionsTableViewController.swift */,
+				F7E7013A258E227B0009C0A9 /* SearchResultTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,12 +445,16 @@
 			files = (
 				F76F79662576C99D006DCE2F /* ViewController.swift in Sources */,
 				F76F796C2576C99D006DCE2F /* LetsGo.xcdatamodeld in Sources */,
+				F7E700EE258E1BAA0009C0A9 /* PlaceAnnotation.swift in Sources */,
 				F76F79622576C99D006DCE2F /* AppDelegate.swift in Sources */,
 				F78FC1F8257CF8380019B83F /* CovidData.swift in Sources */,
 				F78FC1DF257CEAF30019B83F /* CardViewController.swift in Sources */,
+				F7E7013B258E227B0009C0A9 /* SearchResultTableViewController.swift in Sources */,
+				F7E700F3258E1BED0009C0A9 /* MKPlacemark+Extension.swift in Sources */,
 				F76F79642576C99D006DCE2F /* SceneDelegate.swift in Sources */,
 				F78FC208257F946A0019B83F /* SavedViewController.swift in Sources */,
 				F7E700E8258E12230009C0A9 /* PointOfInterest.swift in Sources */,
+				F7E70136258E225C0009C0A9 /* SuggestionsTableViewController.swift in Sources */,
 				F78FC203257F94580019B83F /* MapViewController.swift in Sources */,
 				F7E700E3258E11FF0009C0A9 /* PointOfInterestCell.swift in Sources */,
 			);
