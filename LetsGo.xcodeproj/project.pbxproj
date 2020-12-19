@@ -23,9 +23,9 @@
 		F7E700E3258E11FF0009C0A9 /* PointOfInterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700E2258E11FF0009C0A9 /* PointOfInterestCell.swift */; };
 		F7E700E8258E12230009C0A9 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700E7258E12230009C0A9 /* PointOfInterest.swift */; };
 		F7E700EE258E1BAA0009C0A9 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700ED258E1BAA0009C0A9 /* PlaceAnnotation.swift */; };
-		F7E700F3258E1BED0009C0A9 /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700F2258E1BED0009C0A9 /* MKPlacemark+Extension.swift */; };
 		F7E70136258E225C0009C0A9 /* SuggestionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E70135258E225C0009C0A9 /* SuggestionsTableViewController.swift */; };
 		F7E7013B258E227B0009C0A9 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E7013A258E227B0009C0A9 /* SearchResultTableViewController.swift */; };
+		F7E70146258E29830009C0A9 /* MKPlacemark+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E70145258E29830009C0A9 /* MKPlacemark+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,9 +74,9 @@
 		F7E700E2258E11FF0009C0A9 /* PointOfInterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestCell.swift; sourceTree = "<group>"; };
 		F7E700E7258E12230009C0A9 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
 		F7E700ED258E1BAA0009C0A9 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
-		F7E700F2258E1BED0009C0A9 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "MKPlacemark+Extension.swift"; path = "../../../../../../Downloads/SearchingForNearbyPointsOfInterest/MapSearch/MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
 		F7E70135258E225C0009C0A9 /* SuggestionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsTableViewController.swift; sourceTree = "<group>"; };
 		F7E7013A258E227B0009C0A9 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
+		F7E70145258E29830009C0A9 /* MKPlacemark+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKPlacemark+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,10 +184,10 @@
 			isa = PBXGroup;
 			children = (
 				F7E700E2258E11FF0009C0A9 /* PointOfInterestCell.swift */,
-				F7E700F2258E1BED0009C0A9 /* MKPlacemark+Extension.swift */,
 				F78FC1F7257CF8380019B83F /* CovidData.swift */,
 				F7E700E7258E12230009C0A9 /* PointOfInterest.swift */,
 				F7E700ED258E1BAA0009C0A9 /* PlaceAnnotation.swift */,
+				F7E70145258E29830009C0A9 /* MKPlacemark+Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -450,10 +450,10 @@
 				F78FC1F8257CF8380019B83F /* CovidData.swift in Sources */,
 				F78FC1DF257CEAF30019B83F /* CardViewController.swift in Sources */,
 				F7E7013B258E227B0009C0A9 /* SearchResultTableViewController.swift in Sources */,
-				F7E700F3258E1BED0009C0A9 /* MKPlacemark+Extension.swift in Sources */,
 				F76F79642576C99D006DCE2F /* SceneDelegate.swift in Sources */,
 				F78FC208257F946A0019B83F /* SavedViewController.swift in Sources */,
 				F7E700E8258E12230009C0A9 /* PointOfInterest.swift in Sources */,
+				F7E70146258E29830009C0A9 /* MKPlacemark+Extension.swift in Sources */,
 				F7E70136258E225C0009C0A9 /* SuggestionsTableViewController.swift in Sources */,
 				F78FC203257F94580019B83F /* MapViewController.swift in Sources */,
 				F7E700E3258E11FF0009C0A9 /* PointOfInterestCell.swift in Sources */,
