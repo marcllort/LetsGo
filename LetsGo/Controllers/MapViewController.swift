@@ -65,7 +65,7 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MKMapViewDelegate {
     func mapViewDidFailLoadingMap(_ mapView: MKMapView, withError error: Error) {
-        print("Failed to load the map: \(error)")
+        print("Error: \(error)")
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -76,7 +76,7 @@ extension MapViewController: MKMapViewDelegate {
         view?.canShowCallout = true
         view?.clusteringIdentifier = "searchResult"
         
-        // If the annotation has a URL, add an extra Info button to the annotation so users can open the URL.
+        // Add extra URL Info button to the annotation so users can open the URL.
         if annotation.url != nil {
             let infoButton = UIButton(type: .detailDisclosure)
             view?.rightCalloutAccessoryView = infoButton

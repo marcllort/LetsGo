@@ -223,8 +223,6 @@ extension SearchResultTableViewController: CLLocationManagerDelegate {
     }
 }
 
-// MARK: - UITableViewDataSource
-
 extension SearchResultTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return places?.count ?? 0
