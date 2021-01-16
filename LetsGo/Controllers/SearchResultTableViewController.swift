@@ -68,6 +68,13 @@ class SearchResultTableViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
         definesPresentationContext = true
+        
+        // Instance of SavedController, to access the list
+        let viewController = UIApplication.shared.windows[0].rootViewController?.children[2] as! SavedViewController
+        
+        // BORRAR: Lo dejo como ejemplo
+        //viewController.pointsOfInterest.append(PointOfInterest(poiName: "prova3", poiIsSaved: false))
+        //print("TEST:"+viewController.pointsOfInterest[0].poiName)
     }
     
     override func viewDidAppear(_ animated: Bool) {

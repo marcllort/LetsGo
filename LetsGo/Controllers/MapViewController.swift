@@ -35,6 +35,7 @@ class MapViewController: UIViewController {
     
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: AnnotationReuseID.pin.rawValue)
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+            
     }
     
     override func viewDidAppear(_ animated: Bool) {

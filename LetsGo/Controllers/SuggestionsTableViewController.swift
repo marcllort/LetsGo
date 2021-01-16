@@ -19,6 +19,7 @@ class SuggestionsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SuggestedCompletionTableViewCell.self, forCellReuseIdentifier: SuggestedCompletionTableViewCell.reuseID)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +38,7 @@ class SuggestionsTableViewController: UITableViewController {
         searchCompleter?.pointOfInterestFilter = .some(MKPointOfInterestFilter(including: [MKPointOfInterestCategory.amusementPark, MKPointOfInterestCategory.aquarium, MKPointOfInterestCategory.campground, MKPointOfInterestCategory.hotel, MKPointOfInterestCategory.library, MKPointOfInterestCategory.marina, MKPointOfInterestCategory.movieTheater, MKPointOfInterestCategory.museum, MKPointOfInterestCategory.nationalPark, MKPointOfInterestCategory.nightlife, MKPointOfInterestCategory.park, MKPointOfInterestCategory.stadium, MKPointOfInterestCategory.theater, MKPointOfInterestCategory.zoo]))
         searchCompleter?.resultTypes = .pointOfInterest
         searchCompleter?.region = searchRegion
+        
     }
     
     private func stopProvidingCompletions() {

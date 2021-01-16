@@ -206,7 +206,7 @@
         <!--Saved-->
         <scene sceneID="guD-RL-aOi">
             <objects>
-                <tableViewController id="64I-NR-Jh2" customClass="SavedViewController" customModule="LetsGo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="savedviewcontroller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="64I-NR-Jh2" customClass="SavedViewController" customModule="LetsGo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CPM-JK-jgP">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -293,8 +293,7 @@
         <!--Map Search-->
         <scene sceneID="KaG-gy-fPN">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W8D-ee-zgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="svZ-0n-otD" customClass="SearchResultTableViewController" customModule="MapSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="svZ-0n-otD" customClass="SearchResultTableViewController" customModule="LetsGo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="R18-jK-64d">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,14 +340,14 @@
                         <outlet property="viewAllButton" destination="ZuU-17-z5P" id="sas-cw-mbi"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W8D-ee-zgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5746" y="456"/>
         </scene>
         <!--MapViewController-->
         <scene sceneID="sEV-aO-SFi">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ay0-om-PTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="BV2-aj-SJJ" userLabel="MapViewController" customClass="MapViewController" customModule="MapSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV2-aj-SJJ" userLabel="MapViewController" customClass="MapViewController" customModule="LetsGo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rfJ-hl-12F">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -371,13 +370,13 @@
                         <outlet property="view" destination="rfJ-hl-12F" id="rE6-sA-qui"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ay0-om-PTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6535" y="455"/>
         </scene>
         <!--Map-->
         <scene sceneID="4k1-cO-OWL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x4T-cS-Zp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="Fug-U3-FFD" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Map" image="map.fill" catalog="system" id="76F-28-TqE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Igd-Yu-XO7">
@@ -388,6 +387,7 @@
                         <segue destination="svZ-0n-otD" kind="relationship" relationship="rootViewController" id="UYh-50-pnU"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x4T-cS-Zp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4980" y="456"/>
         </scene>
