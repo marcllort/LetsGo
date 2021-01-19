@@ -20,6 +20,7 @@
 		F78FC1F8257CF8380019B83F /* CovidData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FC1F7257CF8380019B83F /* CovidData.swift */; };
 		F78FC203257F94580019B83F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FC202257F94580019B83F /* MapViewController.swift */; };
 		F78FC208257F946A0019B83F /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78FC207257F946A0019B83F /* SavedViewController.swift */; };
+		F7CFB17925B6DA430009CBDC /* SavedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CFB17825B6DA430009CBDC /* SavedData.swift */; };
 		F7E700E3258E11FF0009C0A9 /* PointOfInterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700E2258E11FF0009C0A9 /* PointOfInterestCell.swift */; };
 		F7E700E8258E12230009C0A9 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700E7258E12230009C0A9 /* PointOfInterest.swift */; };
 		F7E700EE258E1BAA0009C0A9 /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E700ED258E1BAA0009C0A9 /* PlaceAnnotation.swift */; };
@@ -71,6 +72,7 @@
 		F78FC1F7257CF8380019B83F /* CovidData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidData.swift; sourceTree = "<group>"; };
 		F78FC202257F94580019B83F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		F78FC207257F946A0019B83F /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
+		F7CFB17825B6DA430009CBDC /* SavedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedData.swift; sourceTree = "<group>"; };
 		F7E700E2258E11FF0009C0A9 /* PointOfInterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterestCell.swift; sourceTree = "<group>"; };
 		F7E700E7258E12230009C0A9 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
 		F7E700ED258E1BAA0009C0A9 /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				F7E700E7258E12230009C0A9 /* PointOfInterest.swift */,
 				F7E700ED258E1BAA0009C0A9 /* PlaceAnnotation.swift */,
 				F7E70145258E29830009C0A9 /* MKPlacemark+Extension.swift */,
+				F7CFB17825B6DA430009CBDC /* SavedData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				F76F796C2576C99D006DCE2F /* LetsGo.xcdatamodeld in Sources */,
 				F7E700EE258E1BAA0009C0A9 /* PlaceAnnotation.swift in Sources */,
 				F76F79622576C99D006DCE2F /* AppDelegate.swift in Sources */,
+				F7CFB17925B6DA430009CBDC /* SavedData.swift in Sources */,
 				F78FC1F8257CF8380019B83F /* CovidData.swift in Sources */,
 				F78FC1DF257CEAF30019B83F /* CardViewController.swift in Sources */,
 				F7E7013B258E227B0009C0A9 /* SearchResultTableViewController.swift in Sources */,

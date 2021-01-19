@@ -27,8 +27,13 @@ class SearchResultTableViewController: UITableViewController {
         }
     }
     
+    
+    
+    //private let savedController = UIApplication.shared.windows[0].rootViewController?.children[2] as! SavedViewController
+    
     private var suggestionController: SuggestionsTableViewController!
     private var searchController: UISearchController!
+    
     
     @IBOutlet private var viewAllButton: UIBarButtonItem!
     
@@ -68,9 +73,8 @@ class SearchResultTableViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
         definesPresentationContext = true
-        
         // Instance of SavedController, to access the list
-        let viewController = UIApplication.shared.windows[0].rootViewController?.children[2] as! SavedViewController
+        
         
         // BORRAR: Lo dejo como ejemplo
         //viewController.pointsOfInterest.append(PointOfInterest(poiName: "prova3", poiIsSaved: false))
@@ -98,6 +102,7 @@ class SearchResultTableViewController: UITableViewController {
         } else if segue.identifier == SegueID.showAll.rawValue {
             mapViewController.boundingRegion = boundingRegion
             mapViewController.mapItems = places
+            
         }
     }
     
@@ -213,6 +218,13 @@ extension SearchResultTableViewController {
             cell.textLabel?.text = mapItem.name
             cell.detailTextLabel?.text = mapItem.placemark.formattedAddress
         }
+        
+        let searchedPoint = PointOfInterest(poiName: (cell.textLabel?.text)!, poiIsSaved: true)
+        
+        let savedController = UIApplication.shared.windows[0].rootViewController?.children[2] as! SavedViewController
+        //savedController.pointsOfInterest.append(searchedPoint)
+        savedController.addPointOfInterest(newPoint: searchedPoint)
+        
         
         return cell
     }

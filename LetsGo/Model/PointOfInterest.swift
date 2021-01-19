@@ -7,7 +7,9 @@
 import Foundation
 
 
-class PointOfInterest {
+
+
+class PointOfInterest: Codable {
     var poiName: String
     var poiIsSaved: Bool
     
@@ -16,3 +18,5 @@ class PointOfInterest {
         self.poiIsSaved = poiIsSaved
     }
 }
+
+
