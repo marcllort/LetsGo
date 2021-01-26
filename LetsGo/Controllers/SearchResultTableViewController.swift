@@ -27,13 +27,8 @@ class SearchResultTableViewController: UITableViewController {
         }
     }
     
-    
-    
-    //private let savedController = UIApplication.shared.windows[0].rootViewController?.children[2] as! SavedViewController
-    
     private var suggestionController: SuggestionsTableViewController!
     private var searchController: UISearchController!
-    
     
     @IBOutlet private var viewAllButton: UIBarButtonItem!
     
@@ -59,6 +54,7 @@ class SearchResultTableViewController: UITableViewController {
         
         searchController = UISearchController(searchResultsController: suggestionController)
         searchController.searchResultsUpdater = suggestionController
+        searchController.searchBar.barStyle = UIBarStyle.black
         
         let name = UIApplication.willEnterForegroundNotification
         foregroundRestorationObserver = NotificationCenter.default.addObserver(forName: name, object: nil, queue: nil, using: { [unowned self] (_) in
@@ -73,12 +69,6 @@ class SearchResultTableViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
         definesPresentationContext = true
-        // Instance of SavedController, to access the list
-        
-        
-        // BORRAR: Lo dejo como ejemplo
-        //viewController.pointsOfInterest.append(PointOfInterest(poiName: "prova3", poiIsSaved: false))
-        //print("TEST:"+viewController.pointsOfInterest[0].poiName)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,8 +91,22 @@ class SearchResultTableViewController: UITableViewController {
             
         } else if segue.identifier == SegueID.showAll.rawValue {
             mapViewController.boundingRegion = boundingRegion
-            mapViewController.mapItems = places
+            var saved: [MKMapItem] = []
             
+            let viewController = UIApplication.shared.windows[0].rootViewController?.children[2] as! SavedViewController
+            viewController.getSavedPointsOfInterest()
+            for place in viewController.pointsOfInterest {
+                let lat:CLLocationDegrees = place.lat
+                let long:CLLocationDegrees = place.long
+                
+                let coordinates = CLLocationCoordinate2DMake(lat, long)
+                let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                
+                let mapItem = MKMapItem(placemark: placemark)
+                mapItem.name = place.address
+                saved.append(mapItem)
+            }
+            mapViewController.mapItems = saved
         }
     }
     
@@ -118,7 +122,6 @@ class SearchResultTableViewController: UITableViewController {
     }
     
     private func search(using searchRequest: MKLocalSearch.Request) {
-
         searchRequest.region = boundingRegion
         searchRequest.resultTypes = .pointOfInterest
         
@@ -144,6 +147,7 @@ class SearchResultTableViewController: UITableViewController {
         }
     }
 }
+
 
 extension SearchResultTableViewController {
     private func requestLocation() {
@@ -186,6 +190,47 @@ extension SearchResultTableViewController {
         alertController.addAction(openSettingsAction)
         present(alertController, animated: true, completion: nil)
     }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return places?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseID.resultCell.rawValue, for: indexPath)
+        
+        if let mapItem = places?[indexPath.row] {
+            cell.textLabel?.text = mapItem.name
+            cell.detailTextLabel?.text = mapItem.placemark.formattedAddress
+        }
+        
+        let searchedPoint = PointOfInterest(poiName: (cell.textLabel?.text)!, poiIsSaved: false, lat: (places?[indexPath.row].placemark.coordinate.latitude)!,
+                                            long: (places?[indexPath.row].placemark.coordinate.longitude)!, address: (places?[indexPath.row].name)!)
+        
+        let savedController = UIApplication.shared.windows[0].rootViewController?.children[2] as! SavedViewController
+        savedController.addPointOfInterest(newPoint: searchedPoint)
+                
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var header = "Search results"
+        if let city = currentPlacemark?.locality {
+            let templateString = "Search Results Near %@"
+            header = String(format: templateString, city)
+        }
+        
+        return header
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if tableView == suggestionController.tableView, let suggestion = suggestionController.completerResults?[indexPath.row] {
+            searchController.isActive = false
+            searchController.searchBar.text = suggestion.title
+            search(for: suggestion)
+        }
+    }
 }
 
 extension SearchResultTableViewController: CLLocationManagerDelegate {
@@ -206,54 +251,8 @@ extension SearchResultTableViewController: CLLocationManagerDelegate {
     }
 }
 
-extension SearchResultTableViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places?.count ?? 0
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseID.resultCell.rawValue, for: indexPath)
-        
-        if let mapItem = places?[indexPath.row] {
-            cell.textLabel?.text = mapItem.name
-            cell.detailTextLabel?.text = mapItem.placemark.formattedAddress
-        }
-        
-        let searchedPoint = PointOfInterest(poiName: (cell.textLabel?.text)!, poiIsSaved: true)
-        
-        let savedController = UIApplication.shared.windows[0].rootViewController?.children[2] as! SavedViewController
-        //savedController.pointsOfInterest.append(searchedPoint)
-        savedController.addPointOfInterest(newPoint: searchedPoint)
-        
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var header = "Search results"
-        if let city = currentPlacemark?.locality {
-            let templateString = "Search Results Near %@"
-            header = String(format: templateString, city)
-        }
-        
-        return header
-    }
-}
-
-extension SearchResultTableViewController {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if tableView == suggestionController.tableView, let suggestion = suggestionController.completerResults?[indexPath.row] {
-            searchController.isActive = false
-            searchController.searchBar.text = suggestion.title
-            search(for: suggestion)
-        }
-    }
-}
-
-
 extension SearchResultTableViewController: UISearchBarDelegate {
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }

@@ -15,22 +15,10 @@ class SavedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.poiGenerator()
+        getSavedPointsOfInterest()
         table.rowHeight = 85
         table.estimatedRowHeight = 95
         table.tableFooterView = UIView()
-    }
-    
-    func poiGenerator(){
-       /* pointsOfInterest.append(PointOfInterest(poiName: "prova2", poiIsSaved: false))
-        pointsOfInterest.append(PointOfInterest(poiName: "prova1", poiIsSaved: true))
-    */
-        if userDataExist() {
-            getSavedPointsOfInterest()
-        }
-        else {
-            
-        }
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,43 +30,42 @@ class SavedViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "poiCell", for: indexPath) as! PointOfInterestCell
         
         cell.poiTitleLabel.text = pointsOfInterest[indexPath.row].poiName
         cell.poiImageView.image = pointsOfInterest[indexPath.row].poiIsSaved ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
         
-        
         return cell
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        
         if !pointsOfInterest[indexPath.row].poiIsSaved {
-            let alert = UIAlertController(title: "Marcar com a completeada", message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Marcar como completa", style: .default, handler: { _ in
+            let alert = UIAlertController(title: "Favourite", message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Save as favourite", style: .default, handler: { _ in
                 self.pointsOfInterest[indexPath.row].poiIsSaved = true
+                self.removePointsOfInterest()
                 self.savePointsOfInterest()
-                self.tableView.reloadData()
+                tableView.reloadData()
             }))
-            alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
         }else{
-            let alert = UIAlertController(title: "Que vols fer?", message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Marcar como incompleta", style: .default, handler: { _ in
+            let alert = UIAlertController(title: "Action", message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Unfavourite", style: .default, handler: { _ in
                 self.pointsOfInterest[indexPath.row].poiIsSaved = false
+                self.removePointsOfInterest()
                 self.savePointsOfInterest()
-                self.tableView.reloadData()
+                tableView.reloadData()
+                
             }))
-            alert.addAction(UIAlertAction(title: "Eliminar", style: .cancel, handler: { _ in
+            alert.addAction(UIAlertAction(title: "Delete", style: .cancel, handler: { _ in
                 self.pointsOfInterest.remove(at: indexPath.row)
+                self.removePointsOfInterest()
                 self.savePointsOfInterest()
-                self.tableView.reloadData()
-                //self.savePointsOfInterest()
+                tableView.reloadData()
             }))
             present(alert, animated: true, completion: nil)
         }
@@ -92,69 +79,41 @@ class SavedViewController: UITableViewController {
     func addPointOfInterest(newPoint: PointOfInterest) {
         pointsOfInterest.append(newPoint)
         
-        //Borrar datos de user defaults y añadir el array de nuevo con el nuevo dato
-        let newData = SavedData(points: pointsOfInterest)
-
-        //let userDefaults = UserDefaults.standard
-        
-        removePointsOfInterest()
         let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "saved")
         
-        do {
-            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: newData, requiringSecureCoding: false)
-
-            try userDefaults.set(encodedData, forKey: keyUserDefaults)
-            userDefaults.synchronize()
-
-        } catch {
-            print(error.localizedDescription)
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(pointsOfInterest) {
+            userDefaults.setValue(encoded, forKey: "saved")
+            tableView.reloadData()
         }
-        tableView.reloadData()
     }
     
     func savePointsOfInterest() {
-        let newData = SavedData(points: pointsOfInterest)
-        //let userDefaults = UserDefaults.standard
-        
         removePointsOfInterest()
         let userDefaults = UserDefaults.standard
         
-        do {
-            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: newData, requiringSecureCoding: false)
-
-            try userDefaults.set(newData, forKey: keyUserDefaults)
-            userDefaults.synchronize()
-
-        } catch  {
-            print(error.localizedDescription)
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(pointsOfInterest) {
+            userDefaults.setValue(encoded, forKey: "saved")
         }
-        
-        tableView.reloadData()
     }
     
     func removePointsOfInterest() {
-        if userDataExist() {
-            let userDefaults = UserDefaults.standard
-            userDefaults.removeObject(forKey: keyUserDefaults)
-        }
-        tableView.reloadData()
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "saved")
     }
     
     func userDataExist() -> Bool {
-        return UserDefaults.standard.object(forKey: keyUserDefaults) != nil
+        return UserDefaults.standard.object(forKey: "saved") != nil
     }
     
     func getSavedPointsOfInterest() {
         let userDefaults = UserDefaults.standard
-        
-        if userDataExist() {
-            do {
-                let savedData = try userDefaults.data(forKey: keyUserDefaults)
-                let decodedData = NSKeyedUnarchiver.unarchiveObject(with: savedData!) as! SavedData
-
-                pointsOfInterest = decodedData.points
-            } catch {
-                print(error.localizedDescription)
+        if let savedData = userDefaults.object(forKey: "saved") as? Data {
+            let decoder = JSONDecoder()
+            if let points = try? decoder.decode([PointOfInterest].self, from: savedData) {
+                pointsOfInterest = points
             }
         }
     }

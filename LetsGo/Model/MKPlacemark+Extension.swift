@@ -14,4 +14,3 @@ extension MKPlacemark {
         return CNPostalAddressFormatter.string(from: postalAddress, style: .mailingAddress).replacingOccurrences(of: "\n", with: " ")
     }
 }
-

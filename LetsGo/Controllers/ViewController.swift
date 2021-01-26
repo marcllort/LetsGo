@@ -58,7 +58,6 @@ class ViewController: UIViewController {
     func searchLocationForText(_ string: String){
 
         let searchRequest = MKLocalSearch.Request()
-        
         searchRequest.naturalLanguageQuery=string
         let search = MKLocalSearch(request: searchRequest)
         
@@ -103,6 +102,7 @@ extension ViewController: CLLocationManagerDelegate{
         previousLocation = location
         centerOnRegion(nil)
     }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR")
     }

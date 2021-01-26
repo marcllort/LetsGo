@@ -75,12 +75,6 @@ extension MapViewController: MKMapViewDelegate {
         view?.canShowCallout = true
         view?.clusteringIdentifier = "searchResult"
         
-        // Add extra URL Info button to the annotation so users can open the URL.
-        if annotation.url != nil {
-            let infoButton = UIButton(type: .detailDisclosure)
-            view?.rightCalloutAccessoryView = infoButton
-        }
-        
         return view
     }
     

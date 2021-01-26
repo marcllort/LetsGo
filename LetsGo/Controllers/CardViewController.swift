@@ -97,7 +97,6 @@ class CardViewController: UIViewController, UISearchBarDelegate {
     @IBAction func searchCall(_ sender: Any) {
         apiCall()
     }
-        
     
     func random(min: Int, max:Int) -> Int {
         return min + Int(arc4random_uniform(UInt32(max - min + 1)))
@@ -106,11 +105,9 @@ class CardViewController: UIViewController, UISearchBarDelegate {
 
 
 extension CardViewController: CardDelegate {
-    
     func cardDidTapInside(card: Card) {
-                cardContent?.data=covidRes
+        cardContent?.data=covidRes
         cardContent?.reload()
-        
     }
     
     func cardHighlightDidTapButton(card: CardHighlight, button: UIButton) {
@@ -118,5 +115,4 @@ extension CardViewController: CardDelegate {
             card.open()
         }
     }
-    
 }
